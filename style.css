@@ -278,7 +278,8 @@ a:hover {
   transition: all var(--transition-fast);
 }
 
-.sound-toggle-btn:hover {
+.sound-toggle-btn:hover,
+.sound-toggle-btn.is-playing {
   background: var(--pink-neon);
   color: var(--bg-deep);
   box-shadow: 0 0 15px var(--pink-neon);
@@ -1011,4 +1012,89 @@ a:hover {
   transform: scale(1.03);
   border-color: var(--pink-neon);
   box-shadow: 0 0 25px var(--pink-glow);
+}
+
+/* ==================== УВЕДОМЛЕНИЕ О ФОНОВОЙ МУЗЫКЕ ==================== */
+.music-fallback-toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1200;
+  max-width: 340px;
+  background: var(--bg-card);
+  border: 1px solid var(--pink-neon);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow-neon), 0 12px 30px rgba(0, 0, 0, 0.8);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+.music-toast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  color: var(--pink-light);
+  margin-bottom: 0.45rem;
+}
+
+.music-toast-close {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.music-toast-close:hover {
+  color: var(--pink-neon);
+}
+
+.music-toast-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  line-height: 1.45;
+}
+
+.music-toast-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.music-toast-btn,
+.music-toast-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.music-toast-btn {
+  background: var(--pink-neon);
+  color: var(--bg-deep);
+}
+
+.music-toast-btn:hover {
+  background: var(--pink-light);
+}
+
+.music-toast-link {
+  background: var(--pink-subtle);
+  border: 1px solid var(--pink-border);
+  color: var(--pink-light);
+}
+
+.music-toast-link:hover {
+  border-color: var(--pink-neon);
+  color: var(--text-white);
 }

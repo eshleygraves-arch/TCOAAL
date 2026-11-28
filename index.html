@@ -30,8 +30,8 @@
           <li class="nav-item"><a href="Julia.html">Джулия</a></li>
           <li class="nav-item"><a href="Rene.html">Рене</a></li>
           <li class="nav-item">
-            <button class="sound-toggle-btn" id="audioToggle">
-              <span id="audioIcon">🔊</span> <span id="audioText">Атмосфера: Выкл</span>
+            <button class="sound-toggle-btn" id="audioToggle" title="The Coffin of Andy and Leyley — Twisted Clowns (OST)">
+              <span id="audioIcon">🔇</span> <span id="audioText">Музыка: Выкл</span>
             </button>
           </li>
         </ul>
@@ -322,61 +322,7 @@
         quoteAuthor.style.opacity = '1';
       }, 200);
     });
-
-    // Атмосферный звуковой синтезатор на Web Audio API (без внешних файлов)
-    let audioCtx = null;
-    let isPlaying = false;
-    let osc1, osc2, gainNode;
-
-    const audioToggle = document.getElementById('audioToggle');
-    const audioText = document.getElementById('audioText');
-    const audioIcon = document.getElementById('audioIcon');
-
-    audioToggle.addEventListener('click', () => {
-      if (!isPlaying) {
-        try {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-          
-          // Создаем мягкий низкочастотный фоновый гул и мистический интервал
-          osc1 = audioCtx.createOscillator();
-          osc2 = audioCtx.createOscillator();
-          gainNode = audioCtx.createGain();
-
-          osc1.type = 'sine';
-          osc1.frequency.setValueAtTime(55, audioCtx.currentTime); // A1 note
-          
-          osc2.type = 'triangle';
-          osc2.frequency.setValueAtTime(110, audioCtx.currentTime); // A2 note
-
-          // Периодическое легкое вибрато
-          gainNode.gain.setValueAtTime(0.04, audioCtx.currentTime);
-
-          osc1.connect(gainNode);
-          osc2.connect(gainNode);
-          gainNode.connect(audioCtx.destination);
-
-          osc1.start();
-          osc2.start();
-
-          isPlaying = true;
-          audioText.textContent = "Атмосфера: Вкл";
-          audioIcon.textContent = "🎵";
-          audioToggle.style.background = "var(--pink-neon)";
-          audioToggle.style.color = "#000";
-        } catch (e) {
-          console.error("Audio error", e);
-        }
-      } else {
-        if (osc1) osc1.stop();
-        if (osc2) osc2.stop();
-        if (audioCtx) audioCtx.close();
-        isPlaying = false;
-        audioText.textContent = "Атмосфера: Выкл";
-        audioIcon.textContent = "🔇";
-        audioToggle.style.background = "var(--pink-subtle)";
-        audioToggle.style.color = "var(--pink-light)";
-      }
-    });
   </script>
+  <script src="music.js"></script>
 </body>
 </html>
